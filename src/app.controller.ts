@@ -6,7 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/api/hello')
-  async getClientInfo(@Query('visitor_name') name: string): Promise<any> {
-    return this.appService.getClientInfo(name);
+  async getClientInfo(
+    @Query('visitor_name') name: string,
+    request,
+  ): Promise<any> {
+    return this.appService.getClientInfo(name, request);
   }
 }

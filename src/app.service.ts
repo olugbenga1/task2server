@@ -8,11 +8,11 @@ console.log(process.env.weatherApiKey);
 
 @Injectable()
 export class AppService {
-  async getClientInfo(name: string): Promise<any> {
+  async getClientInfo(name: string, request): Promise<any> {
     // Get the client IP address
-    // const ip =
-    //   request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-    const ip = '2601:246:5900:bf10::6e0a';
+    const ip =
+      request.headers['x-forwarded-for'] || request.connection.remoteAddress;
+    // const ip = '2601:246:5900:bf10::6e0a';
 
     // Get location information from IP address
     const locationResponse = geoip.lookup(ip);
